@@ -1,11 +1,14 @@
 #include <iostream>
-#include "person.h"
 #include <string>
+
+#include "person.h"
+#include "ABLL.h"
 
 using namespace std;
 
 int main()
 {
+    ABLL abll;
     cout << "Welcome to Thoufeek's search engine" << endl;
     int option = 1;
     while (option > 0 && option < 6)
@@ -32,6 +35,7 @@ int main()
         else if (option == 3)
         {
             cout << "List by age selected." << endl;
+            abll.dispbyage();
         }
         else if (option == 4)
         {
@@ -87,8 +91,9 @@ int main()
             }
 
             person *p = new person(name, age, description, category);
+            abll.insert(age, p);
             cout << "New person added successfully!" << endl;
-            delete p;
+            // delete p;
         }
     }
 

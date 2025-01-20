@@ -17,6 +17,7 @@ private:
 public:
     person(string name1, int age1, string desc1, string cat);
     void disp();
+    void popularity();
 };
 
 #endif

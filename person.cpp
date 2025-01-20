@@ -20,3 +20,8 @@ void person::disp()
     cout << "Category: " << category << endl;
     cout << "Overall Popularity: " << pop << endl;
 }
+
+void person::popularity()
+{
+    pop++;
+}
