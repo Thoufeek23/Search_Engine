@@ -1,7 +1,7 @@
 # Variables
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall
-OBJ = driver.o person.o ABLL.o
+OBJ = driver.o person.o ABLL.o BST.o
 TARGET = main.exe
 
 # Default target
@@ -21,6 +21,9 @@ person.o: person.cpp person.h
 
 ABLL.o: ABLL.cpp ABLL.h
 	$(CXX) $(CXXFLAGS) -c ABLL.cpp
+
+BST.o: BST.cpp BST.h
+	$(CXX) $(CXXFLAGS) -c BST.cpp
 
 # Cleaning up generated files
 clean:

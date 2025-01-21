@@ -3,15 +3,17 @@
 
 #include "person.h"
 #include "ABLL.h"
+#include "BST.h"
 
 using namespace std;
 
 int main()
 {
     ABLL abll;
+    BST bst;
     cout << "Welcome to Thoufeek's search engine" << endl;
     int option = 1;
-    while (option > 0 && option < 6)
+    while (option > 0 && option < 7)
     {
         cout << "--------------------------------------------" << endl;
         cout << "Enter option number to select" << endl;
@@ -21,7 +23,8 @@ int main()
         cout << "3. List by age" << endl;
         cout << "4. List by popularity" << endl;
         cout << "5. Add new person" << endl;
-        cout << "6. Exit" << endl;
+        cout << "6. Edit exisiting person" << endl;
+        cout << "7. Exit" << endl;
         cin >> option;
 
         if (option == 1)
@@ -51,13 +54,26 @@ int main()
             cout << "Enter name: ";
             cin.ignore();
             getline(cin, name);
+            if (name == "")
+            {
+                cout << "Name cannot be empty. Please start over." << endl;
+                continue;
+            }
 
             cout << "Enter age: ";
             cin >> age;
-
+            if (age < 0 || age > 100)
+            {
+                cout << "Invalid age. Please start over. [Range 1 - 100]" << endl;
+                continue;
+            }
             cout << "Enter description: ";
             cin.ignore();
             getline(cin, description);
+            if (description == "")
+            {
+                cout << "Alert! Description is empty." << endl;
+            }
 
             cout << "Choose category: " << endl;
             cout << "1. Tech" << endl;
@@ -92,8 +108,15 @@ int main()
 
             person *p = new person(name, age, description, category);
             abll.insert(age, p);
-            cout << "New person added successfully!" << endl;
-            // delete p;
+            bst.insert(p);
+        }
+        else if (option == 6)
+        {
+            string ch;
+            cout << "Enter name: ";
+            cin.ignore();
+            getline(cin, ch);
+            // bst.edit(ch);
         }
     }
 
