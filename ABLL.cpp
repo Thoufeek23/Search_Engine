@@ -20,18 +20,35 @@ ABLL::~ABLL()
 
 void ABLL::insert(int age, person *p)
 {
-    Node *newNode = new Node;
-    newNode->p = p;
-    newNode->next = nullptr;
-    int i = age;
-    if (ageArray[i] == nullptr)
+    int t = 0;
+    Node *curr = ageArray[age];
+    while (curr != nullptr)
     {
-        ageArray[i] = newNode;
+        if ((*curr->p) == *p)
+        {
+            t = 1;
+        }
+        curr = curr->next;
+    }
+    if (t == 1)
+    {
+        return;
     }
     else
     {
-        newNode->next = ageArray[i];
-        ageArray[i] = newNode;
+        Node *newNode = new Node;
+        newNode->p = p;
+        newNode->next = nullptr;
+        int i = age;
+        if (ageArray[i] == nullptr)
+        {
+            ageArray[i] = newNode;
+        }
+        else
+        {
+            newNode->next = ageArray[i];
+            ageArray[i] = newNode;
+        }
     }
 }
 

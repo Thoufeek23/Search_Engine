@@ -14,7 +14,7 @@ person::person(string name1, int age1, string desc1, string cat)
 
 bool person::operator==(const person &other) const
 {
-    return (name == other.name && age == other.age);
+    return (name == other.name && age == other.age && category == other.category);
 }
 
 bool person::operator>(const person &other) const

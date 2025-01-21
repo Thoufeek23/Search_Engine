@@ -25,7 +25,7 @@ void BST::insert(person *p, Node *node)
 {
     if (*p == *(node->data))
     {
-        cout << "Person with same name and age already exists." << endl;
+        cout << "Person with same name and age exist in the category!" << endl;
     }
     else
     {
@@ -57,3 +57,21 @@ void BST::insert(person *p, Node *node)
         }
     }
 }
+/*
+void BST::searchbyname(string name)
+{
+    if (root == nullptr)
+    {
+        cout << "No person found." << endl;
+    }
+    else
+    {
+        searchbyname(name, root);
+    }
+}
+
+void BST::searchbyname(string name, Node* root)
+{
+    string s = root -> data -> getname;
+}
+*/

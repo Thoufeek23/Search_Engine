@@ -30,6 +30,12 @@ int main()
         if (option == 1)
         {
             cout << "Search by name selected." << endl;
+            string s;
+            cout << "Enter name: ";
+            cin.ignore();
+            getline(cin, s);
+            // person *p = new person(s, 0, "", "");
+            // bst.searchbyname(s);
         }
         else if (option == 2)
         {
@@ -107,8 +113,8 @@ int main()
             }
 
             person *p = new person(name, age, description, category);
-            abll.insert(age, p);
             bst.insert(p);
+            abll.insert(age, p);
         }
         else if (option == 6)
         {

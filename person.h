@@ -20,7 +20,6 @@ public:
     bool operator>(const person &other) const;
     void disp();
     void popularity();
-    // int check(person *a, person *b);
 };
 
 #endif

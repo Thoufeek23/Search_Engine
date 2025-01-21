@@ -22,5 +22,7 @@ public:
     //~BST();
     void insert(person *p);
     void insert(person *p, Node *node);
-    // void edit(string name);
+    // void searchbyname(string name);
+    // void searchbyname(string name, Node* node);
+    //  void edit(string name);
 };
