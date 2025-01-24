@@ -49,7 +49,7 @@ void BST::insert(person *p, Node *node)
                 node->left = new Node;
                 node->left->data = p;
                 node->left->right = nullptr;
-                node->left->right = nullptr;
+                node->left->left = nullptr;
                 cout << "New person added successfully!" << endl;
                 return;
             }
@@ -57,8 +57,49 @@ void BST::insert(person *p, Node *node)
         }
     }
 }
+
+void BST::searchbyname(person *p)
+{
+    int i = 1; // Initialize counter for the search result display
+    if (root == nullptr)
+    {
+        cout << "No person found." << endl;
+    }
+    else
+    {
+        searchbyname(p, root, i);
+    }
+}
+
+void BST::searchbyname(person *p, Node *node, int &i)
+{
+    if (node == nullptr)
+    {
+        return;
+    }
+    searchbyname(p, node->left, i);
+    if (p->checkname(*(node->data)))
+    {
+        cout << i << ". ";
+        node->data->shallowdisp();
+        i++;
+    }
+    searchbyname(p, node->right, i);
+}
+
 /*
-void BST::searchbyname(string name)
+void BST::display(Node *node)
+{
+    if (node != nullptr)
+    {
+        display(node->left);
+        node->data->disp();
+        cout << endl;
+        display(node->right);
+    }
+}
+
+void BST::check()
 {
     if (root == nullptr)
     {
@@ -66,12 +107,6 @@ void BST::searchbyname(string name)
     }
     else
     {
-        searchbyname(name, root);
+        display(root);
     }
-}
-
-void BST::searchbyname(string name, Node* root)
-{
-    string s = root -> data -> getname;
-}
-*/
+}*/

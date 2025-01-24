@@ -16,9 +16,12 @@ private:
 
 public:
     person(string name1, int age1, string desc1, string cat);
+    bool operator=(const person &other) const;
     bool operator==(const person &other) const;
     bool operator>(const person &other) const;
+    bool checkname(const person &other) const;
     void disp();
+    void shallowdisp();
     void popularity();
 };
 

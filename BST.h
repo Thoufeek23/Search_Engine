@@ -20,9 +20,12 @@ private:
 public:
     /// BST();
     //~BST();
+
     void insert(person *p);
     void insert(person *p, Node *node);
-    // void searchbyname(string name);
-    // void searchbyname(string name, Node* node);
-    //  void edit(string name);
+    // void display(Node *node);
+    // void check();
+    void searchbyname(person *p);
+    void searchbyname(person *p, Node *node, int &i);
+    //   void edit(string name);
 };

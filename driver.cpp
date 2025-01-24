@@ -13,6 +13,7 @@ int main()
     BST bst;
     cout << "Welcome to Thoufeek's search engine" << endl;
     int option = 1;
+
     while (option > 0 && option < 7)
     {
         cout << "--------------------------------------------" << endl;
@@ -34,8 +35,9 @@ int main()
             cout << "Enter name: ";
             cin.ignore();
             getline(cin, s);
-            // person *p = new person(s, 0, "", "");
-            // bst.searchbyname(s);
+            person *p = new person(s, 0, "", "");
+            bst.searchbyname(p);
+            // bst.check();
         }
         else if (option == 2)
         {
@@ -125,7 +127,6 @@ int main()
             // bst.edit(ch);
         }
     }
-
     cout << "Thank you for using our search engine!" << endl;
     return 0;
 }

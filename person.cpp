@@ -12,11 +12,20 @@ person::person(string name1, int age1, string desc1, string cat)
     category = cat;
 }
 
+bool person::operator=(const person &other) const
+{
+    return (name == other.name);
+}
+
 bool person::operator==(const person &other) const
 {
     return (name == other.name && age == other.age && category == other.category);
 }
 
+bool person::checkname(const person &other) const
+{
+    return (name == other.name);
+}
 bool person::operator>(const person &other) const
 {
     return (name > other.name);
@@ -31,6 +40,10 @@ void person::disp()
     cout << "Overall Popularity: " << pop << endl;
 }
 
+void person::shallowdisp()
+{
+    cout << name << ", " << age << endl;
+}
 void person::popularity()
 {
     pop++;
