@@ -1,5 +1,8 @@
-#include <iostream>
-#include <string>
+#ifndef ABLL_H
+#define ABLL_H
+
+#include <array>
+#include <memory>
 #include "person.h"
 
 using namespace std;
@@ -10,14 +13,15 @@ private:
     struct Node
     {
         person *p;
-        Node *next;
+        unique_ptr<Node> next;
     };
-    Node *ageArray[101];
+    array<unique_ptr<Node>, person::MAX_AGE + 1> ageArray;
 
 public:
-    ABLL();
-    ~ABLL();
     void insert(int age, person *p);
+    void remove(int age, person *p);
     void makeEmpty();
     void dispbyage();
 };
+
+#endif

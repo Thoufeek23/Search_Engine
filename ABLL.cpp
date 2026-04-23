@@ -5,80 +5,54 @@
 
 using namespace std;
 
-ABLL::ABLL()
-{
-    for (int i = 0; i < 101; i++)
-    {
-        ageArray[i] = nullptr;
-    }
-}
-
-ABLL::~ABLL()
-{
-    makeEmpty();
-}
-
 void ABLL::insert(int age, person *p)
 {
-    int t = 0;
-    Node *curr = ageArray[age];
-    while (curr != nullptr)
+    person::validateAge(age);
+    for (Node *curr = ageArray[age].get(); curr != nullptr; curr = curr->next.get())
     {
-        if ((*curr->p) == *p)
+        if (*(curr->p) == *p)
         {
-            t = 1;
+            return;
         }
-        curr = curr->next;
     }
-    if (t == 1)
+    unique_ptr<Node> newNode(new Node);
+    newNode->p = p;
+    newNode->next = std::move(ageArray[age]);
+    ageArray[age] = std::move(newNode);
+}
+
+void ABLL::remove(int age, person *p)
+{
+    person::validateAge(age);
+    unique_ptr<Node> *link = &ageArray[age];
+    while (*link)
     {
-        return;
-    }
-    else
-    {
-        Node *newNode = new Node;
-        newNode->p = p;
-        newNode->next = nullptr;
-        int i = age;
-        if (ageArray[i] == nullptr)
+        if ((*link)->p == p)
         {
-            ageArray[i] = newNode;
+            *link = std::move((*link)->next);
+            return;
         }
-        else
-        {
-            newNode->next = ageArray[i];
-            ageArray[i] = newNode;
-        }
+        link = &((*link)->next);
     }
 }
 
 void ABLL::makeEmpty()
 {
-    for (int i = 0; i < 101; i++)
+    for (auto &head : ageArray)
     {
-        Node *curr = ageArray[i];
-        while (curr != nullptr)
-        {
-            Node *temp = curr;
-            curr = curr->next;
-            delete temp;
-        }
-        ageArray[i] = nullptr;
+        head.reset();
     }
 }
 
 void ABLL::dispbyage()
 {
-    for (int i = 0; i < 101; i++)
+    for (const auto &head : ageArray)
     {
-        Node *curr = ageArray[i];
-        while (curr != nullptr)
+        for (Node *curr = head.get(); curr != nullptr; curr = curr->next.get())
         {
-            Node *temp = curr;
-            cout << endl;
-            temp->p->disp();
-            temp->p->popularity();
-            curr = curr->next;
+            cout << endl
+                 << *(curr->p);
+            curr->p->popularity();
         }
     }
     cout << endl;
